@@ -458,7 +458,6 @@ function fmt(n) {
   return Number(n).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-const INDICES_API = "http://localhost:5000/api/indices";
 let sparkCharts = {};
 
 async function loadIndices() {
@@ -531,9 +530,13 @@ async function testAlert() {
   try {
     const res = await fetch(url);
     const json = await res.json();
-    alert("✅ Test alert sent! Check your Telegram.");
+    if (json.status === "ok") {
+      alert("✅ Test alert sent! Check your Telegram.\n\nIf nothing arrives, check that TELEGRAM_TOKEN and TELEGRAM_CHAT_ID are set in Render → Environment.");
+    } else {
+      alert("⚠️ Server responded but alert may not have sent.\n\nError: " + (json.message || JSON.stringify(json)));
+    }
   } catch (e) {
-    alert("❌ Could not reach proxy server. Make sure proxy.py is running.");
+    alert("❌ Could not reach the server.\n\nError: " + e.message);
   }
 }
 
