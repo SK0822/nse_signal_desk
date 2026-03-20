@@ -1,0 +1,11 @@
+flask
+flask-cors
+smartapi-python
+pyotp
+yfinance
+pandas
+numpy
+requests
+apscheduler
+logzero
+websocket-client
