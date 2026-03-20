@@ -471,14 +471,19 @@ _alerted = {}
 def send_telegram(message: str):
     """Send a message to Telegram. Silently fails if not configured."""
     if TELEGRAM_TOKEN == "YOUR_BOT_TOKEN" or TELEGRAM_CHAT_ID == "YOUR_CHAT_ID":
+        print("⚠️  Telegram not configured — set TELEGRAM_TOKEN and TELEGRAM_CHAT_ID env vars on Render.")
         return
     try:
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-        requests.post(url, json={
+        resp = requests.post(url, json={
             "chat_id": TELEGRAM_CHAT_ID,
             "text": message,
             "parse_mode": "HTML"
         }, timeout=10)
+        if resp.status_code == 200:
+            print(f"✅ Telegram alert sent successfully.")
+        else:
+            print(f"❌ Telegram error: {resp.status_code} — {resp.text}")
     except Exception as e:
         print(f"Telegram send failed: {e}")
 
