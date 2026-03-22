@@ -21,6 +21,7 @@ import traceback
 import requests
 import threading
 import json
+import requests
 from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
@@ -35,6 +36,7 @@ TOTP_SECRET  = os.environ.get("TOTP_SECRET",  "YOUR_TOTP_SECRET")
 
 TELEGRAM_TOKEN   = os.environ.get("TELEGRAM_TOKEN",   "YOUR_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "YOUR_CHAT_ID")
+GCP_NEWS_URL = "http://34.42.82.253:5000/api/news"
 # ──────────────────────────────────────────────────────────────────────────────
 
 # NSE stocks to scan — symbol as used by yfinance (.NS suffix)
@@ -949,6 +951,14 @@ def health():
         "websocket": "connected" if _ws_connected else "disconnected",
         "live_prices": live_count
     })
+
+@app.route('/api/news')
+def proxy_news():
+    try:
+        r = requests.get(GCP_NEWS_URL, timeout=10)
+        return jsonify(r.json())
+    except Exception as e:
+        return jsonify([])
 
 if __name__ == "__main__":
     # Login first to get auth + feed tokens
