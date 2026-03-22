@@ -282,8 +282,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const API         = "http://localhost:5000/api/signals";
-const INDICES_API = "http://localhost:5000/api/indices";
+const API         = "https://nse-signal-desk.onrender.com/api/signals";
+const INDICES_API = "https://nse-signal-desk.onrender.com/api/indices";
 const NEWS_API    = "https://luther-dome-vault-marking.trycloudflare.com/api/news";
 const NEWS_TOP_API= "https://luther-dome-vault-marking.trycloudflare.com/api/news/top";
 
@@ -628,7 +628,7 @@ async function loadIndices() {
 
 async function testAlert() {
   try {
-    const res = await fetch("http://localhost:5000/api/test-alert");
+    const res = await fetch("https://nse-signal-desk.onrender.com/api/test-alert");
     const json = await res.json();
     alert("Test alert sent! Check your Telegram.");
   } catch (e) {
@@ -643,7 +643,7 @@ async function loadAll() {
     renderNews();
   }
   try {
-    const h = await fetch("http://localhost:5000/api/health");
+    const h = await fetch("https://nse-signal-desk.onrender.com/api/health");
     const hj = await h.json();
     const dot = document.getElementById("statusDot");
     const txt = document.getElementById("statusText");
