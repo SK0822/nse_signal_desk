@@ -39,7 +39,6 @@
     padding: 0 0 4rem;
   }
 
-  /* ── top bar ── */
   .topbar {
     display: flex;
     align-items: center;
@@ -69,15 +68,12 @@
   .refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .last-update { font-size: 11px; color: var(--muted); font-family: var(--font-mono); }
 
-  /* ── page content ── */
   .page { max-width: 1280px; margin: 0 auto; padding: 2rem; }
 
-  /* ── tabs ── */
   .tabs { display: flex; gap: 4px; margin-bottom: 1.75rem; background: var(--surface); border-radius: 10px; padding: 4px; width: fit-content; border: 1px solid var(--border); box-shadow: 0 1px 4px rgba(30,40,80,0.06); }
   .tab-btn { font-family: var(--font-head); font-size: 13px; font-weight: 500; padding: 7px 22px; border-radius: 7px; border: none; background: transparent; color: var(--muted); cursor: pointer; transition: all 0.2s; }
   .tab-btn.active { background: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(79,70,229,0.25); }
 
-  /* ── summary strip ── */
   .summary { display: flex; gap: 12px; margin-bottom: 1.75rem; flex-wrap: wrap; }
   .sumcard { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 22px; min-width: 110px; box-shadow: 0 1px 4px rgba(30,40,80,0.05); }
   .sumcard-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; font-weight: 600; }
@@ -86,11 +82,10 @@
   .sumcard-val.sell-col { color: var(--sell); }
   .sumcard-val.hold-col { color: var(--hold); }
   .sumcard-val.total-col { color: var(--text); }
+  .sumcard-val.accent-col { color: var(--accent); }
 
-  /* ── grid ── */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
 
-  /* ── card ── */
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -104,15 +99,21 @@
   .card.card-buy  { border-top: 3px solid var(--buy); }
   .card.card-sell { border-top: 3px solid var(--sell); }
   .card.card-hold { border-top: 3px solid var(--hold); }
+  .card.card-bullish { border-top: 3px solid var(--buy); }
+  .card.card-bearish { border-top: 3px solid var(--sell); }
+  .card.card-neutral { border-top: 3px solid var(--hold); }
 
   .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
   .stock-sym { font-family: var(--font-head); font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
   .stock-sec { font-size: 10px; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
 
   .badge { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 6px; font-family: var(--font-head); letter-spacing: 0.04em; }
-  .badge-buy  { background: var(--buy-bg);  color: var(--buy);  border: 1px solid var(--buy-border); }
-  .badge-sell { background: var(--sell-bg); color: var(--sell); border: 1px solid var(--sell-border); }
-  .badge-hold { background: var(--hold-bg); color: var(--hold); border: 1px solid var(--hold-border); }
+  .badge-buy      { background: var(--buy-bg);  color: var(--buy);  border: 1px solid var(--buy-border); }
+  .badge-sell     { background: var(--sell-bg); color: var(--sell); border: 1px solid var(--sell-border); }
+  .badge-hold     { background: var(--hold-bg); color: var(--hold); border: 1px solid var(--hold-border); }
+  .badge-bullish  { background: var(--buy-bg);  color: var(--buy);  border: 1px solid var(--buy-border); }
+  .badge-bearish  { background: var(--sell-bg); color: var(--sell); border: 1px solid var(--sell-border); }
+  .badge-neutral  { background: var(--hold-bg); color: var(--hold); border: 1px solid var(--hold-border); }
 
   .price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 10px; }
   .price-ltp { font-family: var(--font-head); font-size: 24px; font-weight: 700; color: var(--text); }
@@ -144,7 +145,6 @@
 
   .updated { font-size: 9px; color: var(--muted); margin-top: 8px; text-align: right; opacity: 0.5; font-family: var(--font-mono); }
 
-  /* ── states ── */
   .loading { text-align: center; padding: 5rem 2rem; }
   .loading-spinner { width: 32px; height: 32px; border: 2px solid var(--border2); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
   @keyframes spin { to { transform: rotate(360deg); } }
@@ -167,7 +167,6 @@
   .mini-chart-vol  { position: relative; width: 100%; height: 28px; margin-top: 3px; }
   .chart-axis-label { display: flex; justify-content: space-between; font-size: 9px; color: var(--muted); margin-top: 3px; opacity: 0.7; font-family: var(--font-mono); }
 
-  /* ── index bar ── */
   .index-bar {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
@@ -202,6 +201,49 @@
   .mood-flat    { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
   .index-spark  { position: relative; width: 80px; height: 28px; margin-left: auto; }
   .index-tile-inner { display: flex; align-items: center; gap: 10px; }
+
+  /* ── News Feed styles ── */
+  .news-filters { display: flex; gap: 8px; margin-bottom: 1.25rem; flex-wrap: wrap; align-items: center; }
+  .news-filter-btn {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+    padding: 5px 14px; border-radius: 6px; border: 1px solid var(--border2);
+    background: var(--surface); color: var(--muted); cursor: pointer; transition: all 0.2s;
+  }
+  .news-filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .news-filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .news-filter-btn.bullish.active { background: var(--buy); border-color: var(--buy); color: #fff; }
+  .news-filter-btn.bearish.active { background: var(--sell); border-color: var(--sell); color: #fff; }
+
+  .news-list { display: flex; flex-direction: column; gap: 10px; }
+  .news-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem 1.25rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 1px 4px rgba(30,40,80,0.05);
+    text-decoration: none; display: block; color: inherit;
+  }
+  .news-card:hover { box-shadow: 0 4px 16px rgba(30,40,80,0.10); transform: translateY(-1px); }
+  .news-card.bullish { border-left: 3px solid var(--buy); }
+  .news-card.bearish { border-left: 3px solid var(--sell); }
+  .news-card.neutral { border-left: 3px solid var(--hold); }
+
+  .news-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
+  .news-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.5; flex: 1; }
+  .news-score { font-family: var(--font-mono); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 5px; white-space: nowrap; }
+  .news-score.high { background: rgba(79,70,229,0.08); color: #4f46e5; border: 1px solid rgba(79,70,229,0.2); }
+  .news-score.medium { background: var(--hold-bg); color: var(--hold); border: 1px solid var(--hold-border); }
+
+  .news-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .news-source { font-size: 10px; color: var(--muted); font-family: var(--font-mono); }
+  .news-time   { font-size: 10px; color: var(--muted); font-family: var(--font-mono); }
+  .news-tickers { display: flex; gap: 4px; flex-wrap: wrap; }
+  .news-ticker { font-size: 10px; padding: 2px 8px; border-radius: 4px; background: var(--surface2); color: var(--accent); border: 1px solid rgba(79,70,229,0.15); font-family: var(--font-mono); font-weight: 600; }
+
+  .news-empty { text-align: center; padding: 4rem 2rem; color: var(--muted); font-size: 13px; }
+
+  .ticker-search { padding: 8px 14px; border: 1px solid var(--border2); border-radius: 8px; font-family: var(--font-mono); font-size: 12px; background: var(--surface); color: var(--text); width: 180px; outline: none; }
+  .ticker-search:focus { border-color: var(--accent); }
+  .ticker-search::placeholder { color: var(--muted); }
 </style>
 </head>
 <body>
@@ -227,6 +269,7 @@
   <div class="tabs">
     <button class="tab-btn active" id="tab-swing"    onclick="switchTab('swing')">Swing  (2–10 days)</button>
     <button class="tab-btn"        id="tab-intraday" onclick="switchTab('intraday')">Intraday  (today)</button>
+    <button class="tab-btn"        id="tab-news"     onclick="switchTab('news')">News Feed</button>
   </div>
 
   <div class="summary" id="summary"></div>
@@ -239,13 +282,33 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-const API = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-  ? "http://localhost:5000/api/signals"
-  : `${window.location.origin}/api/signals`;
-const INDICES_API = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-  ? "http://localhost:5000/api/indices"
-  : `${window.location.origin}/api/indices`;
+const API         = "http://localhost:5000/api/signals";
+const INDICES_API = "http://localhost:5000/api/indices";
+const NEWS_API    = "http://34.42.82.253:5000/api/news";
+const NEWS_TOP_API= "http://34.42.82.253:5000/api/news/top";
 
+let allData = [];
+let allNews = [];
+let currentTab = "swing";
+let newsFilter = "all";
+let tickerSearch = "";
+let sparkCharts = {};
+
+// ── Tab switching ──
+function switchTab(tab) {
+  currentTab = tab;
+  ["swing","intraday","news"].forEach(t => {
+    document.getElementById(`tab-${t}`).classList.toggle("active", t === tab);
+  });
+  if (tab === "news") {
+    renderNewsSummary();
+    renderNews();
+  } else {
+    renderAll();
+  }
+}
+
+// ── Signal loading ──
 async function loadSignals() {
   const btn = document.getElementById("refreshBtn");
   const dot = document.getElementById("statusDot");
@@ -267,40 +330,151 @@ async function loadSignals() {
     const res = await fetch(API);
     if (!res.ok) throw new Error(`Server returned ${res.status}`);
     const json = await res.json();
-
     if (json.error) throw new Error(json.error);
-
     allData = json.data || [];
     dot.className = "status-dot live";
     statusText.textContent = "live";
     document.getElementById("lastUpdate").textContent = "Updated " + new Date().toLocaleTimeString("en-IN");
-    renderAll();
+    if (currentTab !== "news") renderAll();
   } catch (err) {
     dot.className = "status-dot";
     statusText.textContent = "offline";
-    document.getElementById("content").innerHTML = `
-      <div class="error-box">
-        <h3>Could not connect to proxy server</h3>
-        <p>
-          Make sure <code>proxy.py</code> is running:<br><br>
-          <code>pip install flask flask-cors smartapi-python pyotp yfinance pandas logzero</code><br>
-          <code>python proxy.py</code><br><br>
-          Error: ${err.message}
-        </p>
-      </div>`;
+    if (currentTab !== "news") {
+      document.getElementById("content").innerHTML = `
+        <div class="error-box">
+          <h3>Could not connect to proxy server</h3>
+          <p>Make sure <code>proxy.py</code> is running.<br>Error: ${err.message}</p>
+        </div>`;
+    }
   } finally {
     btn.disabled = false;
     btn.textContent = "↻ Refresh";
   }
 }
 
-function switchTab(tab) {
-  currentTab = tab;
-  document.getElementById("tab-swing").classList.toggle("active", tab === "swing");
-  document.getElementById("tab-intraday").classList.toggle("active", tab === "intraday");
-  renderAll();
+// ── News loading ──
+async function loadNews() {
+  try {
+    const res = await fetch(NEWS_API);
+    if (!res.ok) throw new Error(`NewsDesk returned ${res.status}`);
+    const json = await res.json();
+    allNews = json || [];
+  } catch (err) {
+    console.warn("NewsDesk fetch failed:", err.message);
+    allNews = [];
+  }
 }
 
+// ── News summary strip ──
+function renderNewsSummary() {
+  const bullish = allNews.filter(n => n.sentiment === "BULLISH").length;
+  const bearish = allNews.filter(n => n.sentiment === "BEARISH").length;
+  const neutral = allNews.filter(n => n.sentiment === "NEUTRAL").length;
+  const high    = allNews.filter(n => n.relevance_score >= 8).length;
+
+  document.getElementById("summary").innerHTML = `
+    <div class="sumcard"><div class="sumcard-label">Total news</div><div class="sumcard-val total-col">${allNews.length}</div></div>
+    <div class="sumcard"><div class="sumcard-label">Bullish</div><div class="sumcard-val buy-col">${bullish}</div></div>
+    <div class="sumcard"><div class="sumcard-label">Bearish</div><div class="sumcard-val sell-col">${bearish}</div></div>
+    <div class="sumcard"><div class="sumcard-label">Neutral</div><div class="sumcard-val hold-col">${neutral}</div></div>
+    <div class="sumcard"><div class="sumcard-label">High priority</div><div class="sumcard-val accent-col">${high}</div></div>
+  `;
+}
+
+// ── News render ──
+function renderNews() {
+  let filtered = [...allNews];
+
+  if (newsFilter === "bullish")  filtered = filtered.filter(n => n.sentiment === "BULLISH");
+  if (newsFilter === "bearish")  filtered = filtered.filter(n => n.sentiment === "BEARISH");
+  if (newsFilter === "top")      filtered = filtered.filter(n => n.relevance_score >= 8);
+
+  if (tickerSearch.trim()) {
+    const q = tickerSearch.trim().toUpperCase();
+    filtered = filtered.filter(n => {
+      const tickers = parseTickers(n.tickers);
+      return tickers.some(t => t.includes(q)) || n.title.toUpperCase().includes(q);
+    });
+  }
+
+  const content = document.getElementById("content");
+
+  if (!allNews.length) {
+    content.innerHTML = `<div class="news-empty">Loading news from NewsDesk... If this persists, check GCP VM is running.</div>`;
+    return;
+  }
+
+  if (!filtered.length) {
+    content.innerHTML = `<div class="news-empty">No news matches this filter.</div>`;
+    return;
+  }
+
+  content.innerHTML = `
+    <div class="news-filters">
+      <button class="news-filter-btn ${newsFilter==='all'?'active':''}"      onclick="setNewsFilter('all')">All</button>
+      <button class="news-filter-btn bullish ${newsFilter==='bullish'?'active':''}" onclick="setNewsFilter('bullish')">Bullish</button>
+      <button class="news-filter-btn bearish ${newsFilter==='bearish'?'active':''}" onclick="setNewsFilter('bearish')">Bearish</button>
+      <button class="news-filter-btn ${newsFilter==='top'?'active':''}"      onclick="setNewsFilter('top')">High Priority</button>
+      <input class="ticker-search" id="tickerSearchInput" type="text" placeholder="Search ticker / keyword..." value="${tickerSearch}" oninput="onTickerSearch(this.value)" />
+    </div>
+    <div class="news-list">
+      ${filtered.map(n => newsCardHTML(n)).join("")}
+    </div>
+  `;
+}
+
+function newsCardHTML(n) {
+  const sentiment = (n.sentiment || "NEUTRAL").toLowerCase();
+  const tickers   = parseTickers(n.tickers);
+  const scoreClass = n.relevance_score >= 8 ? "high" : "medium";
+  const timeStr   = formatNewsTime(n.published_at);
+
+  const tickerHTML = tickers.length
+    ? `<div class="news-tickers">${tickers.map(t => `<span class="news-ticker">${t}</span>`).join("")}</div>`
+    : "";
+
+  return `
+    <a class="news-card ${sentiment}" href="${n.url}" target="_blank" rel="noopener">
+      <div class="news-card-head">
+        <div class="news-title">${n.title}</div>
+        <span class="news-score ${scoreClass}">${n.relevance_score}/10</span>
+      </div>
+      <div class="news-meta">
+        <span class="badge badge-${sentiment}">${(n.sentiment||'NEUTRAL')}</span>
+        <span class="news-source">${n.source}</span>
+        <span class="news-time">${timeStr}</span>
+        ${tickerHTML}
+      </div>
+    </a>`;
+}
+
+function parseTickers(raw) {
+  if (!raw) return [];
+  try {
+    const parsed = typeof raw === "string" ? JSON.parse(raw) : raw;
+    return Array.isArray(parsed) ? parsed : [];
+  } catch { return []; }
+}
+
+function formatNewsTime(str) {
+  if (!str) return "—";
+  try {
+    const d = new Date(str);
+    return d.toLocaleString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  } catch { return str.slice(0, 16); }
+}
+
+function setNewsFilter(f) {
+  newsFilter = f;
+  renderNews();
+}
+
+function onTickerSearch(val) {
+  tickerSearch = val;
+  renderNews();
+}
+
+// ── Signal tab rendering ──
 function renderAll() {
   renderSummary();
   renderCards();
@@ -324,15 +498,9 @@ function renderSummary() {
 function renderCards() {
   if (!allData.length) return;
   const key = currentTab;
-
-  // Sort: buy first, sell next, hold last
   const order = { buy: 0, sell: 1, hold: 2 };
   const sorted = [...allData].sort((a, b) => order[a[key].signal] - order[b[key].signal]);
-
-  document.getElementById("content").innerHTML = `
-    <div class="grid">${sorted.map(s => cardHTML(s, key)).join("")}</div>`;
-
-  // Draw charts after DOM is ready
+  document.getElementById("content").innerHTML = `<div class="grid">${sorted.map(s => cardHTML(s, key)).join("")}</div>`;
   sorted.forEach(s => drawChart(s));
 }
 
@@ -352,8 +520,7 @@ function cardHTML(s, key) {
   const rrVal = (d.entry && d.target && d.sl)
     ? Math.abs((d.target - d.entry) / (d.entry - d.sl)).toFixed(1) : null;
   const pct = (d.entry && d.target && d.sl)
-    ? Math.min(100, Math.max(0, Math.round(((s.price - Math.min(d.sl, d.target)) / Math.abs(d.target - d.sl)) * 100)))
-    : 0;
+    ? Math.min(100, Math.max(0, Math.round(((s.price - Math.min(d.sl, d.target)) / Math.abs(d.target - d.sl)) * 100))) : 0;
 
   const rrHTML = rrVal ? `
     <div class="rr-bar">
@@ -392,7 +559,7 @@ function cardHTML(s, key) {
       ${rrHTML}
       <div class="tags">${d.indicators.map(i => `<span class="tag">${i}</span>`).join("")}</div>
       <div class="why"><strong>Why:</strong> ${d.reason}</div>
-      ${key === 'intraday' && s.intraday_source ? `<div class="updated">${s.intraday_source === '5min' ? '⚡ 5-min candles' : '📅 daily candles (5-min unavailable)'} · candle ${d.candle_time || '—'} · ↻ ${s.updated}</div>` : `<div class="updated">↻ ${s.updated}</div>`}
+      ${key === 'intraday' && s.intraday_source ? `<div class="updated">${s.intraday_source === '5min' ? '⚡ 5-min candles' : '📅 daily candles'} · ${s.updated}</div>` : `<div class="updated">↻ ${s.updated}</div>`}
     </div>`;
 }
 
@@ -402,55 +569,17 @@ function drawChart(s) {
   const lineColor = sig === "buy" ? "#0e9f6e" : sig === "sell" ? "#e02424" : "#c27803";
   const fillColor = sig === "buy" ? "rgba(14,159,110,0.08)" : sig === "sell" ? "rgba(224,36,36,0.08)" : "rgba(194,120,3,0.08)";
   const volColor  = sig === "buy" ? "rgba(14,159,110,0.30)" : sig === "sell" ? "rgba(224,36,36,0.30)" : "rgba(194,120,3,0.30)";
-
   const commonOpts = {
     responsive: true, maintainAspectRatio: false,
     animation: { duration: 400 },
     plugins: { legend: { display: false }, tooltip: { enabled: false } },
     elements: { point: { radius: 0 } },
-    scales: {
-      x: { display: false },
-      y: { display: false, grid: { display: false } }
-    }
+    scales: { x: { display: false }, y: { display: false, grid: { display: false } } }
   };
-
-  // Line chart
   const lineCtx = document.getElementById(`line-${s.symbol}`);
-  if (lineCtx) {
-    new Chart(lineCtx, {
-      type: "line",
-      data: {
-        labels: s.chart.dates,
-        datasets: [{
-          data: s.chart.close,
-          borderColor: lineColor,
-          borderWidth: 1.5,
-          fill: true,
-          backgroundColor: fillColor,
-          tension: 0.3
-        }]
-      },
-      options: commonOpts
-    });
-  }
-
-  // Volume bar chart
+  if (lineCtx) new Chart(lineCtx, { type: "line", data: { labels: s.chart.dates, datasets: [{ data: s.chart.close, borderColor: lineColor, borderWidth: 1.5, fill: true, backgroundColor: fillColor, tension: 0.3 }] }, options: commonOpts });
   const volCtx = document.getElementById(`vol-${s.symbol}`);
-  if (volCtx) {
-    new Chart(volCtx, {
-      type: "bar",
-      data: {
-        labels: s.chart.dates,
-        datasets: [{
-          data: s.chart.volume,
-          backgroundColor: volColor,
-          borderWidth: 0,
-          borderRadius: 1
-        }]
-      },
-      options: { ...commonOpts, scales: { x: { display: false }, y: { display: false } } }
-    });
-  }
+  if (volCtx) new Chart(volCtx, { type: "bar", data: { labels: s.chart.dates, datasets: [{ data: s.chart.volume, backgroundColor: volColor, borderWidth: 0, borderRadius: 1 }] }, options: { ...commonOpts, scales: { x: { display: false }, y: { display: false } } } });
 }
 
 function fmt(n) {
@@ -458,18 +587,14 @@ function fmt(n) {
   return Number(n).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
-let sparkCharts = {};
-
+// ── Indices ──
 async function loadIndices() {
   try {
     const res = await fetch(INDICES_API);
     const json = await res.json();
     if (json.error || !json.data) return;
-
-    // Destroy old sparkline charts
     Object.values(sparkCharts).forEach(c => c.destroy());
     sparkCharts = {};
-
     const bar = document.getElementById("indexBar");
     bar.innerHTML = json.data.map(idx => {
       const chgSign  = idx.change >= 0 ? "+" : "";
@@ -490,64 +615,34 @@ async function loadIndices() {
           </div>
         </div>`;
     }).join("");
-
-    // Draw sparklines
     json.data.forEach(idx => {
       const id = `spark-${idx.name.replace(/\s/g,'')}`;
       const ctx = document.getElementById(id);
       if (!ctx || !idx.spark) return;
       const isUp = idx.change >= 0;
-      sparkCharts[id] = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: idx.spark.map((_, i) => i),
-          datasets: [{
-            data: idx.spark,
-            borderColor: isUp ? "#0e9f6e" : "#e02424",
-            borderWidth: 1.5,
-            fill: false,
-            tension: 0.3,
-            pointRadius: 0
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          animation: false,
-          plugins: { legend: { display: false }, tooltip: { enabled: false } },
-          scales: { x: { display: false }, y: { display: false } }
-        }
-      });
+      sparkCharts[id] = new Chart(ctx, { type: "line", data: { labels: idx.spark.map((_,i)=>i), datasets: [{ data: idx.spark, borderColor: isUp ? "#0e9f6e" : "#e02424", borderWidth: 1.5, fill: false, tension: 0.3, pointRadius: 0 }] }, options: { responsive: true, maintainAspectRatio: false, animation: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, scales: { x: { display: false }, y: { display: false } } } });
     });
-  } catch (e) {
-    console.warn("Indices load failed:", e);
-  }
+  } catch (e) { console.warn("Indices load failed:", e); }
 }
 
 async function testAlert() {
-  const url = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-    ? "http://localhost:5000/api/test-alert"
-    : `${window.location.origin}/api/test-alert`;
   try {
-    const res = await fetch(url);
+    const res = await fetch("http://localhost:5000/api/test-alert");
     const json = await res.json();
-    if (json.status === "ok") {
-      alert("✅ Test alert sent! Check your Telegram.\n\nIf nothing arrives, check that TELEGRAM_TOKEN and TELEGRAM_CHAT_ID are set in Render → Environment.");
-    } else {
-      alert("⚠️ Server responded but alert may not have sent.\n\nError: " + (json.message || JSON.stringify(json)));
-    }
+    alert("Test alert sent! Check your Telegram.");
   } catch (e) {
-    alert("❌ Could not reach the server.\n\nError: " + e.message);
+    alert("Could not reach proxy server. Make sure proxy.py is running.");
   }
 }
 
 async function loadAll() {
-  await Promise.all([loadSignals(), loadIndices()]);
-  // update WS status
+  await Promise.all([loadSignals(), loadIndices(), loadNews()]);
+  if (currentTab === "news") {
+    renderNewsSummary();
+    renderNews();
+  }
   try {
-    const healthUrl = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-      ? "http://localhost:5000/api/health"
-      : `${window.location.origin}/api/health`;
-    const h = await fetch(healthUrl);
+    const h = await fetch("http://localhost:5000/api/health");
     const hj = await h.json();
     const dot = document.getElementById("statusDot");
     const txt = document.getElementById("statusText");
@@ -561,10 +656,8 @@ async function loadAll() {
   } catch(e) {}
 }
 
-// Auto-load on open
 loadAll();
 
-// Auto-refresh every 5 minutes during market hours
 setInterval(() => {
   const now = new Date();
   const h = now.getHours(), m = now.getMinutes();
