@@ -960,6 +960,14 @@ def proxy_news():
     except Exception as e:
         return jsonify([])
 
+@app.route('/api/news/top')
+def proxy_news_top():
+    try:
+        r = requests.get("http://34.42.82.253:5000/api/news/top", timeout=10)
+        return jsonify(r.json())
+    except Exception as e:
+        return jsonify([])
+
 if __name__ == "__main__":
     # Login first to get auth + feed tokens
     print("Logging in to Angel One...")
